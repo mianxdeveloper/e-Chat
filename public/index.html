@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chatbox App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.css"
+        integrity="sha512-kJlvECunwXftkPwyvHbclArO8wszgBGisiLeuDFwNM8ws+wKIw0sv1os3ClWZOcrEB2eRXULYUsm8OVRGJKwGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="login-screen">
+        <h2>🔐 Login to Chat</h2>
+        <input type="text" id="userIdInput" placeholder="Enter your ID (e.g. john123)" autocomplete="off" />
+        <button onclick="registerUser()">Login</button>
+    </div>
+
+    <div id="chat-screen" style="display:none;">
+        <div class="chat-header">
+            <h3>Logged in as <span id="currentUserId"></span></h3>
+            <span id="typingIndicator"></span>
+        </div>
+        <div id="main-container">
+            <div id="sidebar">
+                <h4>Online Users</h4>
+                <ul id="onlineUsers"></ul>
+            </div>
+            <!-- Replace the chat-select div with this simplified version -->
+            <div id="chat-area">
+                <div id="chat-select" style="display:block;">
+                    <h4>Select a user from the list to start chatting</h4>
+                </div>
+                <div id="chat-box" style="display:none;">
+                    <h4>Chat with <span id="chatWith"></span></h4>
+                    <div id="messages"></div>
+                    <div class="input-area">
+                        <button class="emoji-btn" id="emoji-btn" onclick="toggleEmojiPicker()"><i class="ri-emoji-sticker-line"></i></button>
+                        <div id="emojiPicker" style="display:none;"></div>
+                        <textarea type="text" id="messageInput" placeholder="Write a message..."
+                            autocomplete="off"></textarea>
+                        <button class="send-btn" id="send-btn" onclick="sendMessage()"><i class="ri-send-plane-2-fill"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <audio id="notificationSound" src="notify.mp3" preload="auto"></audio>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
